@@ -69,8 +69,8 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'your_user',
-		'password' => 'your_password',
-		'database' => 'your_database',
+		'password' => 'your_password_',
+		'database' => 'your_database_',
 		'prefix' => 'fli_',
 		//'encoding' => 'utf8',
 	);
