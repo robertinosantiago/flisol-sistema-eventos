@@ -1,0 +1,63 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 16/07/2014, 15:54:16
+    Author     : robertino
+*/
+
+.acoes, .check {
+    width: 32px;
+}
+
+div.required > label:after {
+    content: " *";
+    color: #f00;
+}
+
+.form-signin {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.panel-login {
+    min-height: 280px;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.navbar-information {
+    background-color: #ecf0f1;
+    height: 26px;
+}
+
+.navbar-information span.username {
+    color: #2c3e50;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.error-message {
+    font-weight: bold;
+    color: red;
+}
+
+.panel > .panel-body > .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.date-class label {
+    display: block;
+}
+
+.date-class .form-control {
+    width: auto;
+    display: inline-block;
+}
