@@ -14,12 +14,13 @@ App::uses('AppModel', 'Model');
  */
 class Presenter extends AppModel {
 
-    public $belongsTo = array('Event');
+    public $actsAs = array('DateFormat');
+    public $belongsTo = array('Edition');
     public $hasMany = array('PresenterUser');
 
     public function getPresenterById($id) {
         $options = array(
-            'fields' => array('Presenter.id', 'Presenter.file_certificate', 'Presenter.fullname_position', 'Presenter.title_position', 'Presenter.event_id', 'Presenter.has_back', 'Presenter.back_content'),
+            'fields' => array('Presenter.id', 'Presenter.file_certificate', 'Presenter.fullname_position', 'Presenter.title_position', 'Presenter.edition_id', 'Presenter.has_back', 'Presenter.back_content'),
             'conditions' => array(
                 'Presenter.id' => $id
             ),
@@ -30,7 +31,7 @@ class Presenter extends AppModel {
     
     public function getPresenterByUser($user_id) {
         $options = array(
-            'fields' => array('Event.title', 'Event.start_date', 'Event.closing_date', 'Presenter.id', 'PresenterUser.hash_code', 'PresenterUser.title'),
+            'fields' => array('Edition.year', 'Edition.date_of', 'Presenter.id', 'PresenterUser.hash_code', 'PresenterUser.title'),
             'joins' => array(
                 array(
                     'table' => $this->tablePrefix . 'presenter_users',
@@ -39,15 +40,15 @@ class Presenter extends AppModel {
                     'conditions' => array('Presenter.id = PresenterUser.presenter_id')
                 ),
                 array(
-                    'table' => $this->tablePrefix . 'events',
-                    'alias' => 'Event',
+                    'table' => $this->tablePrefix . 'editions',
+                    'alias' => 'Edition',
                     'type' => 'inner',
-                    'conditions' => array('Event.id = Presenter.event_id')
+                    'conditions' => array('Edition.id = Presenter.edition_id')
                 )
             ),
             'conditions' => array(
                 'PresenterUser.user_id' => $user_id,
-                'Event.show_certificate' => true
+                'Edition.show_certificate' => true
             ),
             'recursive' => -1
         );
@@ -57,13 +58,13 @@ class Presenter extends AppModel {
     public function getInfoCertificate($id, $hash_code) {
         $return = array();
         $options = array(
-            'fields' => array('User.fullname', 'Presenter.id', 'PresenterUser.hash_code', 'Event.id', 'Event.title', 'Presenter.fullname_position', 'Presenter.title_position', 'PresenterUser.title', 'Presenter.has_back', 'Presenter.back_content'),
+            'fields' => array('User.fullname', 'Presenter.id', 'PresenterUser.hash_code', 'Edition.id', 'Edition.year', 'Presenter.fullname_position', 'Presenter.title_position', 'PresenterUser.title', 'Presenter.has_back', 'Presenter.back_content'),
             'joins' => array(
                 array(
-                    'table' => $this->tablePrefix . 'events',
-                    'alias' => 'Event',
+                    'table' => $this->tablePrefix . 'editions',
+                    'alias' => 'Edition',
                     'type' => 'inner',
-                    'conditions' => array('Event.id = Presenter.event_id')
+                    'conditions' => array('Edition.id = Presenter.edition_id')
                 ),
                 array(
                     'table' => $this->tablePrefix . 'presenter_users',
@@ -81,7 +82,7 @@ class Presenter extends AppModel {
             'conditions' => array(
                 'Presenter.id' => $id,
                 'PresenterUser.hash_code' => $hash_code,
-                'Event.show_certificate' => true
+                'Edition.show_certificate' => true
             ),
             'recursive' => -1
         );
@@ -89,11 +90,11 @@ class Presenter extends AppModel {
         if ($record) {
             $return['hash_code'] = $record['PresenterUser']['hash_code'];
             $return['fullname'] = $record['User']['fullname'];
-            $return['title'] = $record['Event']['title'];
+            $return['year'] = $record['Edition']['year'];
             $return['title_presentation'] = $record['PresenterUser']['title'];
             $return['fullname_position'] = $record['Presenter']['fullname_position'];
             $return['title_position'] = $record['Presenter']['title_position'];
-            $return['event_id'] = $record['Event']['id'];
+            $return['edition_id'] = $record['Edition']['id'];
             $return['id'] = $record['Presenter']['id'];
             $return['has_back'] = $record['Presenter']['has_back'];
             $return['back_content'] = $record['Presenter']['back_content'];
@@ -101,9 +102,9 @@ class Presenter extends AppModel {
         return $return;
     }
 
-    public function loadPresentersByEvent($event_id, $onlyActive = true) {
+    public function loadPresentersByEdition($edition_id, $onlyActive = true) {
         $options = array(
-            'fields' => array('User.id', 'User.fullname', 'User.document', 'Presenter.id', 'Event.id', 'PresenterUser.id', 'PresenterUser.title'),
+            'fields' => array('User.id', 'User.fullname', 'User.document', 'Presenter.id', 'Edition.id', 'PresenterUser.id', 'PresenterUser.title'),
             'joins' => array(
                 array(
                     'table' => $this->tablePrefix . 'presenter_users',
@@ -118,15 +119,15 @@ class Presenter extends AppModel {
                     'conditions' => array('User.id = PresenterUser.user_id')
                 ),
                 array(
-                    'table' => $this->tablePrefix . 'events',
-                    'alias' => 'Event',
+                    'table' => $this->tablePrefix . 'editions',
+                    'alias' => 'Edition',
                     'type' => 'inner',
-                    'conditions' => array('Event.id = Presenter.event_id')
+                    'conditions' => array('Edition.id = Presenter.edition_id')
                 )
             ),
             'conditions' => array(
                 'User.deleted = 0',
-                'Presenter.event_id' => $event_id
+                'Presenter.edition_id' => $edition_id
             ),
             'order' => array('User.fullname' => 'asc'),
             'recursive' => -1
@@ -157,7 +158,7 @@ class Presenter extends AppModel {
                 )
             ),
             'conditions' => array(
-                'Presenter.event_id' => $id
+                'Presenter.edition_id' => $id
             ),
             'recursive' => -1
         );
@@ -173,10 +174,10 @@ class Presenter extends AppModel {
         return 0;
     }
 
-    public function base64_file($event_id) {
+    public function base64_file($edition_id) {
         $options = array(
             'fields' => array('Presenter.file_certificate'),
-            'conditions' => array('Presenter.event_id' => $event_id),
+            'conditions' => array('Presenter.edition_id' => $edition_id),
             'recursive' => -1
         );
         $record = $this->find('first', $options);
@@ -192,7 +193,7 @@ class Presenter extends AppModel {
 
     public function beforeSave($options = array()) {
         if (isset($this->data['Presenter']['file_certificate']) && !empty($this->data['Presenter']['file_certificate']) && $this->data['Presenter']['file_certificate']['error'] == 0) {
-            $this->data['Presenter']['file_certificate'] = $this->upload($this->data['Presenter']['event_id'], $this->data['Presenter']['file_certificate']);
+            $this->data['Presenter']['file_certificate'] = $this->upload($this->data['Presenter']['edition_id'], $this->data['Presenter']['file_certificate']);
         } else {
            unset($this->data['Presenter']['file_certificate']); 
         }
@@ -204,7 +205,7 @@ class Presenter extends AppModel {
         return parent::beforeSave($options);
     }
 
-    private function upload($event_id, $image = array(), $directory = 'Certificates') {
+    private function upload($edition_id, $image = array(), $directory = 'Certificates') {
         $directory = APP . $directory . DS;
 
         if ($image['error'] != 0 && $image['size'] == 0) {
@@ -213,7 +214,7 @@ class Presenter extends AppModel {
 
         $this->verifyDirectory($directory);
 
-        $image = $this->verifyName($event_id, $image, $directory);
+        $image = $this->verifyName($edition_id, $image, $directory);
 
         $this->moveFile($image, $directory);
 
@@ -228,9 +229,9 @@ class Presenter extends AppModel {
         }
     }
 
-    private function verifyName($event_id, $image, $directory) {
+    private function verifyName($edition_id, $image, $directory) {
         $extension = $this->getExtension($image);
-        $image_info = pathinfo($directory . 'event-' . $event_id . '-presenter' . $extension);
+        $image_info = pathinfo($directory . 'edition-' . $edition_id . '-presenter' . $extension);
         $image_name = $image_info['filename'] . $extension;
         $image['name'] = $image_name;
         return $image;
@@ -263,39 +264,4 @@ class Presenter extends AppModel {
         return '.error';
     }
     
-    public function afterFind($results, $primary = false) {
-        if (isset($value['Event']['start_date'])) {
-            $results[$key]['Event']['start_date'] = $this->__dateFormat($results[$key]['Event']['start_date']);
-        }
-        if (isset($value['Event']['closing_date'])) {
-            $results[$key]['Event']['closing_date'] = $this->__dateFormat($results[$key]['Event']['closing_date']);
-        }
-        
-        return parent::afterFind($results, $primary);
-    }
-    
-    private function __dateFormat($date = null, $originalFormat = 'Y-m-d', $newFormat = 'd/m/Y') {
-        return $this->__date_create_from_format($originalFormat, $date)->format($newFormat);
-    }
-
-    private function __date_create_from_format($dformat, $dvalue) {
-
-        $schedule = $dvalue;
-        $schedule_format = str_replace(array('Y', 'm', 'd', 'H', 'i', 'a'), array('%Y', '%m', '%d', '%I', '%M', '%p'), $dformat);
-        // %Y, %m and %d correspond to date()'s Y m and d.
-        // %I corresponds to H, %M to i and %p to a
-        $ugly = strptime($schedule, $schedule_format);
-        $ymd = sprintf(
-                // This is a format string that takes six total decimal
-                // arguments, then left-pads them with zeros to either
-                // 4 or 2 characters, as needed
-                '%04d-%02d-%02d %02d:%02d:%02d', $ugly['tm_year'] + 1900, // This will be "111", so we need to add 1900.
-                $ugly['tm_mon'] + 1, // This will be the month minus one, so we add one.
-                $ugly['tm_mday'], $ugly['tm_hour'], $ugly['tm_min'], $ugly['tm_sec']
-        );
-        $new_schedule = new DateTime($ymd);
-
-        return $new_schedule;
-    }
-
 }

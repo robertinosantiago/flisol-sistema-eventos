@@ -84,9 +84,6 @@
 <?php echo $this->Form->end(); ?>
 
 <?php $this->start('scripts'); ?>
-<?php echo $this->Html->script('jquery.mask.min'); ?>
-
-
 
 <?php $this->end(); ?>
 

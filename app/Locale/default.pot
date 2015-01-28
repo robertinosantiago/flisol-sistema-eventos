@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2014-08-15 15:57-0300\n"
+"POT-Creation-Date: 2015-01-28 14:08-0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -22,6 +22,17 @@ msgstr ""
 msgid "You do not have privileges to access this content."
 msgstr ""
 
+#: Controller/EditionsController.php:24
+#: View/Editions/form.ctp:11
+#: View/Editions/index.ctp:10;13
+msgid "Editions"
+msgstr ""
+
+#: Controller/EditionsController.php:41
+#: View/Editions/form.ctp:8
+msgid "Edition"
+msgstr ""
+
 #: Controller/EventsController.php:24;41
 #: View/Events/form.ctp:11
 #: View/Events/index.ctp:10;13
@@ -32,7 +43,7 @@ msgid "Events"
 msgstr ""
 
 #: Controller/EventsController.php:52;76;149;204;247;263;279;338;341;369;372;400;403;431;434;463;466;494;497;548;571;594
-#: Controller/UsersController.php:67
+#: Controller/UsersController.php:148
 #: Controller/Component/CrudComponent.php:44;59;75
 msgid "Record not found"
 msgstr ""
@@ -59,7 +70,7 @@ msgid "Successfully saved"
 msgstr ""
 
 #: Controller/EventsController.php:104
-#: Controller/UsersController.php:145
+#: Controller/UsersController.php:226
 #: Controller/Component/CrudComponent.php:33
 msgid "Unable to save the record"
 msgstr ""
@@ -102,68 +113,84 @@ msgstr ""
 #: Controller/UsersController.php:24
 #: View/Layouts/default.ctp:78
 #: View/Users/form.ctp:12
+#: View/Users/import.ctp:12
+#: View/Users/import_check.ctp:11
 #: View/Users/index.ctp:10;13
 #: View/Users/update.ctp:11
 msgid "Users"
 msgstr ""
 
-#: Controller/UsersController.php:41;51;113;213;270
+#: Controller/UsersController.php:41;51;194;294;351
 #: View/Users/form.ctp:9;34
+#: View/Users/import.ctp:9
+#: View/Users/import_check.ctp:8
 #: View/Users/recovery_password.ctp:9
 #: View/Users/update.ctp:8;35
 msgid "User"
 msgstr ""
 
-#: Controller/UsersController.php:90;175
+#: Controller/UsersController.php:86
+msgid "O registro da linha %d possui um formato inválido."
+msgstr ""
+
+#: Controller/UsersController.php:101
+msgid "O email %s já está cadastrado."
+msgstr ""
+
+#: Controller/UsersController.php:134
+msgid "%d registro(s) importado(s) com sucesso"
+msgstr ""
+
+#: Controller/UsersController.php:171;256
 msgid "Registration confirmed"
 msgstr ""
 
-#: Controller/UsersController.php:94
+#: Controller/UsersController.php:175
 msgid "Record successfully verified"
 msgstr ""
 
-#: Controller/UsersController.php:137
+#: Controller/UsersController.php:218
 msgid "Confirmation email"
 msgstr ""
 
-#: Controller/UsersController.php:143
+#: Controller/UsersController.php:224
 msgid "1st step of registration is complete"
 msgstr ""
 
-#: Controller/UsersController.php:157
+#: Controller/UsersController.php:238
 msgid "You have already confirmed your registration."
 msgstr ""
 
-#: Controller/UsersController.php:179
+#: Controller/UsersController.php:260
 msgid "Congratulations! The registration is complete."
 msgstr ""
 
-#: Controller/UsersController.php:182
+#: Controller/UsersController.php:263
 msgid "Unable to validate your registration"
 msgstr ""
 
-#: Controller/UsersController.php:187;191;261
+#: Controller/UsersController.php:268;272;342
 msgid "Unable to locate your registration"
 msgstr ""
 
-#: Controller/UsersController.php:219
+#: Controller/UsersController.php:300
 msgid "User or password wrong, please try again."
 msgstr ""
 
-#: Controller/UsersController.php:253
+#: Controller/UsersController.php:334
 #: View/Emails/html/resetpassword.ctp:1
 msgid "Reset password"
 msgstr ""
 
-#: Controller/UsersController.php:257
+#: Controller/UsersController.php:338
 msgid "Your password was sent by email. Please, verify your inbox."
 msgstr ""
 
-#: Controller/UsersController.php:277
+#: Controller/UsersController.php:358
 msgid "Your password was changed."
 msgstr ""
 
-#: Controller/UsersController.php:280
+#: Controller/UsersController.php:361
 msgid "User or old password wrong. Please try again."
 msgstr ""
 
@@ -171,22 +198,268 @@ msgstr ""
 msgid "An error occurred while deleting the following records: %s"
 msgstr ""
 
-#: Model/Coordinator.php:207
-#: Model/Listener.php:216
-#: Model/Presenter.php:213
+#: Model/Coordinator.php:209
+#: Model/Listener.php:218
+#: Model/Presenter.php:211
 msgid "File not sent to server"
 msgstr ""
 
+#: Model/Edition.php:35;38
 #: Model/Event.php:204;207
 #: Model/User.php:126;129
+#: View/Editions/form.ctp:41;53;66
+#: View/Events/form.ctp:42;54;67
 #: View/Events/peoples.ctp:110;209;306;307
+#: View/Events/update.ctp:66;98;131
 msgid "Yes"
 msgstr ""
 
+#: Model/Edition.php:35;38
 #: Model/Event.php:204;207
 #: Model/User.php:126;129
+#: View/Editions/form.ctp:41;53;66
+#: View/Events/form.ctp:42;54;67
 #: View/Events/peoples.ctp:110;209;306;307
+#: View/Events/update.ctp:66;98;131
 msgid "No"
+msgstr ""
+
+#: View/Editions/form.ctp:22
+#: View/Events/form.ctp:22
+#: View/Events/update.ctp:22
+#: View/Users/change_password.ctp:12
+#: View/Users/form.ctp:23
+#: View/Users/import_check.ctp:22
+#: View/Users/register.ctp:12
+#: View/Users/update.ctp:22
+msgid "Attention:"
+msgstr ""
+
+#: View/Editions/form.ctp:23
+#: View/Events/form.ctp:23
+#: View/Events/update.ctp:23
+#: View/Users/change_password.ctp:13
+#: View/Users/form.ctp:24
+#: View/Users/register.ctp:13
+#: View/Users/update.ctp:23
+msgid "Fields marked with the asterisk symbol (*) are required"
+msgstr ""
+
+#: View/Editions/form.ctp:28
+#: View/Editions/index.ctp:37
+msgid "Year"
+msgstr ""
+
+#: View/Editions/form.ctp:29
+#: View/Events/form.ctp:30
+#: View/Events/update.ctp:34
+msgid "Registration begin"
+msgstr ""
+
+#: View/Editions/form.ctp:30
+#: View/Events/form.ctp:31
+#: View/Events/update.ctp:35
+msgid "Registration end"
+msgstr ""
+
+#: View/Editions/form.ctp:31
+#: View/Editions/index.ctp:39
+msgid "Date of"
+msgstr ""
+
+#: View/Editions/form.ctp:36
+#: View/Events/form.ctp:37
+#: View/Events/peoples.ctp:225
+#: View/Events/update.ctp:55
+msgid "Listeners"
+msgstr ""
+
+#: View/Editions/form.ctp:39
+#: View/Events/form.ctp:40
+#: View/Events/update.ctp:64
+msgid "File of listeners certificate image"
+msgstr ""
+
+#: View/Editions/form.ctp:40
+#: View/Events/form.ctp:41
+#: View/Events/update.ctp:65
+msgid "Fullname position (in pixels) in relation to the certificate of listeners"
+msgstr ""
+
+#: View/Editions/form.ctp:41;53;66
+#: View/Events/form.ctp:42;54;67
+#: View/Events/update.ctp:66;98;131
+msgid "Has content on the back of certificate?"
+msgstr ""
+
+#: View/Editions/form.ctp:42;54;67
+#: View/Events/form.ctp:43;55;68
+#: View/Events/update.ctp:67;99;132
+msgid "Content of back of certificate"
+msgstr ""
+
+#: View/Editions/form.ctp:48
+#: View/Events/form.ctp:49
+#: View/Events/peoples.ctp:31
+#: View/Events/update.ctp:85
+msgid "Coordinators"
+msgstr ""
+
+#: View/Editions/form.ctp:51
+#: View/Events/form.ctp:52
+#: View/Events/update.ctp:96
+msgid "File of coordinators certificate image"
+msgstr ""
+
+#: View/Editions/form.ctp:52
+#: View/Events/form.ctp:53
+#: View/Events/update.ctp:97
+msgid "Fullname position (in pixels) in relation to the certificate of coordinators"
+msgstr ""
+
+#: View/Editions/form.ctp:60
+#: View/Events/form.ctp:61
+#: View/Events/peoples.ctp:125
+#: View/Events/update.ctp:117
+msgid "Presenters"
+msgstr ""
+
+#: View/Editions/form.ctp:63
+#: View/Events/form.ctp:64
+#: View/Events/update.ctp:128
+msgid "File of presenters certificate image"
+msgstr ""
+
+#: View/Editions/form.ctp:64
+#: View/Events/form.ctp:65
+#: View/Events/update.ctp:129
+msgid "Position of fullname (in pixels) in relation to the certificate of presenters"
+msgstr ""
+
+#: View/Editions/form.ctp:65
+#: View/Events/form.ctp:66
+#: View/Events/update.ctp:130
+msgid "Position of presentation title (in pixels) in relation to the certificate of presenters"
+msgstr ""
+
+#: View/Editions/form.ctp:77
+#: View/Events/form.ctp:78
+#: View/Events/update.ctp:42;72;104;137
+#: View/Users/change_password.ctp:26
+#: View/Users/form.ctp:39
+#: View/Users/import.ctp:39
+#: View/Users/import_check.ctp:56
+#: View/Users/register.ctp:27
+#: View/Users/update.ctp:40;59
+msgid "Save"
+msgstr ""
+
+#: View/Editions/form.ctp:81
+#: View/Events/form.ctp:82
+#: View/Events/update.ctp:46;76;108;141
+#: View/Users/form.ctp:43
+#: View/Users/import.ctp:43
+#: View/Users/import_check.ctp:60
+#: View/Users/update.ctp:44;63
+msgid "Cancel"
+msgstr ""
+
+#: View/Editions/index.ctp:23;24
+#: View/Events/index.ctp:23;24
+#: View/Users/index.ctp:23;24
+msgid "New"
+msgstr ""
+
+#: View/Editions/index.ctp:38
+#: View/Events/index.ctp:38
+#: View/Users/save_register.ctp:1
+msgid "Registration"
+msgstr ""
+
+#: View/Editions/index.ctp:40
+#: View/Events/index.ctp:40
+msgid "Enable certificate"
+msgstr ""
+
+#: View/Editions/index.ctp:41
+#: View/Events/index.ctp:41
+#: View/Users/index.ctp:43
+msgid "Actived"
+msgstr ""
+
+#: View/Editions/index.ctp:52
+#: View/Events/index.ctp:52
+#: View/Users/index.ctp:53
+msgid "There are no registered records"
+msgstr ""
+
+#: View/Editions/index.ctp:66
+#: View/Events/index.ctp:66
+#: View/Users/index.ctp:66
+msgid "<i class='fa fa-pencil'></i>"
+msgstr ""
+
+#: View/Editions/index.ctp:66
+#: View/Events/index.ctp:66
+#: View/Users/index.ctp:66
+msgid "Update"
+msgstr ""
+
+#: View/Editions/index.ctp:69
+#: View/Events/index.ctp:69
+#: View/Events/peoples.ctp:78;177;275
+#: View/Users/index.ctp:69
+msgid "<i class='fa fa-trash-o'></i>"
+msgstr ""
+
+#: View/Editions/index.ctp:69
+#: View/Events/index.ctp:69
+#: View/Users/index.ctp:69
+msgid "Delete"
+msgstr ""
+
+#: View/Editions/index.ctp:69
+#: View/Events/index.ctp:69
+#: View/Events/peoples.ctp:78;177;275
+#: View/Users/index.ctp:69
+msgid "Are you sure?"
+msgstr ""
+
+#: View/Editions/index.ctp:72
+#: View/Events/index.ctp:72
+#: View/Users/index.ctp:72
+msgid "<i class='fa fa-random'></i>"
+msgstr ""
+
+#: View/Editions/index.ctp:72
+#: View/Events/index.ctp:72
+msgid "Toggles status"
+msgstr ""
+
+#: View/Editions/index.ctp:75
+#: View/Events/index.ctp:75
+msgid "<i class='fa fa-eye'></i>"
+msgstr ""
+
+#: View/Editions/index.ctp:75
+#: View/Events/index.ctp:75
+msgid "Enable/Disable access to certificate"
+msgstr ""
+
+#: View/Editions/index.ctp:78
+#: View/Events/index.ctp:78
+msgid "<i class='fa fa-users'></i>"
+msgstr ""
+
+#: View/Editions/index.ctp:78
+#: View/Events/index.ctp:78
+msgid "Manage peoples"
+msgstr ""
+
+#: View/Editions/index.ctp:89
+#: View/Events/index.ctp:89
+#: View/Users/index.ctp:86
+msgid "Delete selected"
 msgstr ""
 
 #: View/Emails/html/certificate.ctp:1
@@ -274,6 +547,7 @@ msgstr ""
 #: View/Users/change_password.ctp:19
 #: View/Users/confirmation.ctp:7
 #: View/Users/form.ctp:30
+#: View/Users/import_check.ctp:38
 #: View/Users/login.ctp:10
 #: View/Users/register.ctp:19
 #: View/Users/update.ctp:32
@@ -337,24 +611,6 @@ msgstr ""
 msgid "Panelists"
 msgstr ""
 
-#: View/Events/form.ctp:22
-#: View/Events/update.ctp:22
-#: View/Users/change_password.ctp:12
-#: View/Users/form.ctp:23
-#: View/Users/register.ctp:12
-#: View/Users/update.ctp:22
-msgid "Attention:"
-msgstr ""
-
-#: View/Events/form.ctp:23
-#: View/Events/update.ctp:23
-#: View/Users/change_password.ctp:13
-#: View/Users/form.ctp:24
-#: View/Users/register.ctp:13
-#: View/Users/update.ctp:23
-msgid "Fields marked with the asterisk symbol (*) are required"
-msgstr ""
-
 #: View/Events/form.ctp:28
 #: View/Events/index.ctp:37
 #: View/Events/peoples.ctp:24;158
@@ -368,16 +624,6 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: View/Events/form.ctp:30
-#: View/Events/update.ctp:34
-msgid "Registration begin"
-msgstr ""
-
-#: View/Events/form.ctp:31
-#: View/Events/update.ctp:35
-msgid "Registration end"
-msgstr ""
-
 #: View/Events/form.ctp:32
 #: View/Events/update.ctp:36
 msgid "Start date"
@@ -386,75 +632,6 @@ msgstr ""
 #: View/Events/form.ctp:33
 #: View/Events/update.ctp:37
 msgid "Closing date"
-msgstr ""
-
-#: View/Events/form.ctp:37
-#: View/Events/peoples.ctp:225
-#: View/Events/update.ctp:55
-msgid "Listeners"
-msgstr ""
-
-#: View/Events/form.ctp:40
-#: View/Events/update.ctp:64
-msgid "File of listeners certificate image"
-msgstr ""
-
-#: View/Events/form.ctp:41
-#: View/Events/update.ctp:65
-msgid "Fullname position (in pixels) in relation to the certificate of listeners"
-msgstr ""
-
-#: View/Events/form.ctp:47
-#: View/Events/peoples.ctp:31
-#: View/Events/update.ctp:83
-msgid "Coordinators"
-msgstr ""
-
-#: View/Events/form.ctp:50
-#: View/Events/update.ctp:94
-msgid "File of coordinators certificate image"
-msgstr ""
-
-#: View/Events/form.ctp:51
-#: View/Events/update.ctp:95
-msgid "Fullname position (in pixels) in relation to the certificate of coordinators"
-msgstr ""
-
-#: View/Events/form.ctp:57
-#: View/Events/peoples.ctp:125
-#: View/Events/update.ctp:113
-msgid "Presenters"
-msgstr ""
-
-#: View/Events/form.ctp:60
-#: View/Events/update.ctp:124
-msgid "File of presenters certificate image"
-msgstr ""
-
-#: View/Events/form.ctp:61
-#: View/Events/update.ctp:125
-msgid "Position of fullname (in pixels) in relation to the certificate of presenters"
-msgstr ""
-
-#: View/Events/form.ctp:62
-#: View/Events/update.ctp:126
-msgid "Position of presentation title (in pixels) in relation to the certificate of presenters"
-msgstr ""
-
-#: View/Events/form.ctp:72
-#: View/Events/update.ctp:42;70;100;131
-#: View/Users/change_password.ctp:26
-#: View/Users/form.ctp:39
-#: View/Users/register.ctp:27
-#: View/Users/update.ctp:40;59
-msgid "Save"
-msgstr ""
-
-#: View/Events/form.ctp:76
-#: View/Events/update.ctp:46;74;104;135
-#: View/Users/form.ctp:43
-#: View/Users/update.ctp:44;63
-msgid "Cancel"
 msgstr ""
 
 #: View/Events/home.ctp:8
@@ -477,90 +654,9 @@ msgstr ""
 msgid "No next events available"
 msgstr ""
 
-#: View/Events/index.ctp:23;24
-#: View/Users/index.ctp:23;24
-msgid "New"
-msgstr ""
-
-#: View/Events/index.ctp:38
-#: View/Users/save_register.ctp:1
-msgid "Registration"
-msgstr ""
-
 #: View/Events/index.ctp:39
 #: View/Users/my_events.ctp:20;51;82
 msgid "Period"
-msgstr ""
-
-#: View/Events/index.ctp:40
-msgid "Enable certificate"
-msgstr ""
-
-#: View/Events/index.ctp:41
-#: View/Users/index.ctp:40
-msgid "Actived"
-msgstr ""
-
-#: View/Events/index.ctp:52
-#: View/Users/index.ctp:50
-msgid "There are no registered records"
-msgstr ""
-
-#: View/Events/index.ctp:66
-#: View/Users/index.ctp:63
-msgid "<i class='fa fa-pencil'></i>"
-msgstr ""
-
-#: View/Events/index.ctp:66
-#: View/Users/index.ctp:63
-msgid "Update"
-msgstr ""
-
-#: View/Events/index.ctp:69
-#: View/Events/peoples.ctp:78;177;275
-#: View/Users/index.ctp:66
-msgid "<i class='fa fa-trash-o'></i>"
-msgstr ""
-
-#: View/Events/index.ctp:69
-#: View/Users/index.ctp:66
-msgid "Delete"
-msgstr ""
-
-#: View/Events/index.ctp:69
-#: View/Events/peoples.ctp:78;177;275
-#: View/Users/index.ctp:66
-msgid "Are you sure?"
-msgstr ""
-
-#: View/Events/index.ctp:72
-#: View/Users/index.ctp:69
-msgid "<i class='fa fa-random'></i>"
-msgstr ""
-
-#: View/Events/index.ctp:72
-msgid "Toggles status"
-msgstr ""
-
-#: View/Events/index.ctp:75
-msgid "<i class='fa fa-eye'></i>"
-msgstr ""
-
-#: View/Events/index.ctp:75
-msgid "Enable/Disable access to certificate"
-msgstr ""
-
-#: View/Events/index.ctp:78
-msgid "<i class='fa fa-users'></i>"
-msgstr ""
-
-#: View/Events/index.ctp:78
-msgid "Manage peoples"
-msgstr ""
-
-#: View/Events/index.ctp:89
-#: View/Users/index.ctp:83
-msgid "Delete selected"
 msgstr ""
 
 #: View/Events/peoples.ctp:37;130;230
@@ -580,7 +676,8 @@ msgstr ""
 #: View/Events/pdf/report_listener.ctp:37
 #: View/Events/pdf/report_presenter.ctp:38
 #: View/Users/form.ctp:32
-#: View/Users/index.ctp:38
+#: View/Users/import_check.ctp:43
+#: View/Users/index.ctp:41
 #: View/Users/register.ctp:21
 #: View/Users/update.ctp:33
 msgid "Document"
@@ -660,7 +757,7 @@ msgid "There are no registered listeners for this event"
 msgstr ""
 
 #: View/Events/peoples.ctp:272
-#: View/Users/index.ctp:72
+#: View/Users/index.ctp:75
 msgid "<i class='fa fa-check'></i>"
 msgstr ""
 
@@ -706,11 +803,11 @@ msgstr ""
 msgid "View listener image certificate"
 msgstr ""
 
-#: View/Events/update.ctp:89
+#: View/Events/update.ctp:91
 msgid "View coordinator image certificate"
 msgstr ""
 
-#: View/Events/update.ctp:119
+#: View/Events/update.ctp:123
 msgid "View presenter image certificate"
 msgstr ""
 
@@ -742,10 +839,10 @@ msgstr ""
 msgid "Image preview"
 msgstr ""
 
-#: View/Events/pdf/get_certificate.ctp:15
-#: View/Events/pdf/view_certificate_coordinator.ctp:7
-#: View/Events/pdf/view_certificate_listener.ctp:7
-#: View/Events/pdf/view_certificate_presenter.ctp:10
+#: View/Events/pdf/get_certificate.ctp:15;27
+#: View/Events/pdf/view_certificate_coordinator.ctp:7;19
+#: View/Events/pdf/view_certificate_listener.ctp:7;20
+#: View/Events/pdf/view_certificate_presenter.ctp:10;22
 msgid "The authenticity of this document may be verified at this link:"
 msgstr ""
 
@@ -833,6 +930,7 @@ msgid "New Password"
 msgstr ""
 
 #: View/Users/form.ctp:33
+#: View/Users/import_check.ctp:48
 #: View/Users/register.ctp:22
 #: View/Users/update.ctp:34
 msgid "Phone"
@@ -848,11 +946,24 @@ msgstr ""
 msgid "Administrator"
 msgstr ""
 
-#: View/Users/index.ctp:37
+#: View/Users/import.ctp:36
+msgid "File CSV"
+msgstr ""
+
+#: View/Users/import_check.ctp:23
+msgid "Por favor, confirme os dados a serem importados."
+msgstr ""
+
+#: View/Users/import_check.ctp:33
+#: View/Users/index.ctp:40
 msgid "Fullname"
 msgstr ""
 
-#: View/Users/index.ctp:39
+#: View/Users/index.ctp:26;27
+msgid "Import"
+msgstr ""
+
+#: View/Users/index.ctp:42
 msgid "Verified"
 msgstr ""
 
@@ -930,6 +1041,10 @@ msgstr ""
 
 #: View/Users/update.ctp:50
 msgid "Update password"
+msgstr ""
+
+#: View/ViewBlock.php:80
+msgid "A view block with the name '%s' is already/still open."
 msgstr ""
 
 #: Model/User.php:validation for field email

@@ -14,27 +14,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Plugin/CakePdf/Pdf/CakePdf.php:219
-msgid "Engine is not loaded"
+#: Utility/CakeTime.php:152
+msgid "abday"
 msgstr ""
 
-#: Plugin/CakePdf/Pdf/CakePdf.php:291
-msgid "Pdf engine \"%s\" not found"
+#: Utility/CakeTime.php:158
+msgid "day"
 msgstr ""
 
-#: Plugin/CakePdf/Pdf/CakePdf.php:294
-msgid "Pdf engines must extend \"AbstractPdfEngine\""
+#: Utility/CakeTime.php:164
+msgid "d_t_fmt"
 msgstr ""
 
-#: Plugin/CakePdf/Pdf/CakePdf.php:311
-msgid "Crypto is not loaded"
+#: Utility/CakeTime.php:186
+msgid "abmon"
 msgstr ""
 
-#: Plugin/CakePdf/Pdf/CakePdf.php:318
-msgid "Pdf crypto \"%s\" not found"
+#: Utility/CakeTime.php:192
+msgid "mon"
 msgstr ""
 
-#: Plugin/CakePdf/Pdf/CakePdf.php:321
-msgid "Crypto engine must extend \"AbstractPdfCrypto\""
+#: Utility/CakeTime.php:203
+msgid "am_pm"
+msgstr ""
+
+#: Utility/CakeTime.php:210
+msgid "t_fmt_ampm"
+msgstr ""
+
+#: Utility/CakeTime.php:224
+msgid "d_fmt"
+msgstr ""
+
+#: Utility/CakeTime.php:230
+msgid "t_fmt"
 msgstr ""
 

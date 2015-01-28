@@ -1,21 +1,20 @@
 # LANGUAGE translation of CakePHP Application
 # Copyright YEAR NAME <EMAIL@ADDRESS>
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: Cake\n"
 "POT-Creation-Date: 2015-01-28 14:08-0200\n"
-"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
-"Last-Translator: NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2015-01-28 14:30-0300\n"
+"Last-Translator: Robertino Mendes Santiago Jr <robertino@ufpr.br>\n"
+"Language-Team: Robertino <robertino@ufpr.br>\n"
+"Language: pt-BR\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: View/Errors/error400.ctp:21
-#: View/Errors/error500.ctp:21
+#: View/Errors/error400.ctp:21 View/Errors/error500.ctp:21
 msgid "Error"
 msgstr ""
 
@@ -23,8 +22,7 @@ msgstr ""
 msgid "The requested address %s was not found on this server."
 msgstr ""
 
-#: View/Errors/error500.ctp:22
-#: Error/ExceptionRenderer.php:234
+#: View/Errors/error500.ctp:22 Error/ExceptionRenderer.php:234
 msgid "An Internal Error Has Occurred."
 msgstr ""
 
@@ -252,15 +250,12 @@ msgstr[1] ""
 msgid "Error in field %s"
 msgstr ""
 
-#: View/Helper/FormHelper.php:922
-#: View/Scaffolds/form.ctp:48
-#: View/Scaffolds/index.ctp:79;94
-#: View/Scaffolds/view.ctp:65;80;190
+#: View/Helper/FormHelper.php:922 View/Scaffolds/form.ctp:48
+#: View/Scaffolds/index.ctp:79;94 View/Scaffolds/view.ctp:65;80;190
 msgid "New %s"
 msgstr ""
 
-#: View/Helper/FormHelper.php:928
-#: View/Scaffolds/view.ctp:53;111
+#: View/Helper/FormHelper.php:928 View/Scaffolds/view.ctp:53;111
 msgid "Edit %s"
 msgstr ""
 
@@ -268,58 +263,57 @@ msgstr ""
 msgid "empty"
 msgstr ""
 
-#: View/Helper/FormHelper.php:1894
-#: View/Scaffolds/form.ctp:23
+#: View/Helper/FormHelper.php:1894 View/Scaffolds/form.ctp:23
 msgid "Submit"
 msgstr ""
 
 #: View/Helper/FormHelper.php:2875
 msgid "January"
-msgstr ""
+msgstr "Janeiro"
 
 #: View/Helper/FormHelper.php:2876
 msgid "February"
-msgstr ""
+msgstr "Fevereiro"
 
 #: View/Helper/FormHelper.php:2877
 msgid "March"
-msgstr ""
+msgstr "Março"
 
 #: View/Helper/FormHelper.php:2878
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: View/Helper/FormHelper.php:2879
 msgid "May"
-msgstr ""
+msgstr "Maio"
 
 #: View/Helper/FormHelper.php:2880
 msgid "June"
-msgstr ""
+msgstr "Junho"
 
 #: View/Helper/FormHelper.php:2881
 msgid "July"
-msgstr ""
+msgstr "Julho"
 
 #: View/Helper/FormHelper.php:2882
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 #: View/Helper/FormHelper.php:2883
 msgid "September"
-msgstr ""
+msgstr "Setembro"
 
 #: View/Helper/FormHelper.php:2884
 msgid "October"
-msgstr ""
+msgstr "Outubro"
 
 #: View/Helper/FormHelper.php:2885
 msgid "November"
-msgstr ""
+msgstr "Novembro"
 
 #: View/Helper/FormHelper.php:2886
 msgid "December"
-msgstr ""
+msgstr "Decembro"
 
 #: View/Helper/HtmlHelper.php:769
 msgid "Home"
@@ -329,20 +323,17 @@ msgstr ""
 msgid " of "
 msgstr ""
 
-#: View/Scaffolds/form.ctp:27
-#: View/Scaffolds/index.ctp:26;77
+#: View/Scaffolds/form.ctp:27 View/Scaffolds/index.ctp:26;77
 #: View/Scaffolds/view.ctp:49
 msgid "Actions"
 msgstr ""
 
-#: View/Scaffolds/form.ctp:31
-#: View/Scaffolds/index.ctp:51
+#: View/Scaffolds/form.ctp:31 View/Scaffolds/index.ctp:51
 #: View/Scaffolds/view.ctp:175
 msgid "Delete"
 msgstr ""
 
-#: View/Scaffolds/form.ctp:34
-#: View/Scaffolds/index.ctp:54
+#: View/Scaffolds/form.ctp:34 View/Scaffolds/index.ctp:54
 #: View/Scaffolds/view.ctp:57;178
 msgid "Are you sure you want to delete # %s?"
 msgstr ""
@@ -351,24 +342,23 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-#: View/Scaffolds/form.ctp:44
-#: View/Scaffolds/index.ctp:87
+#: View/Scaffolds/form.ctp:44 View/Scaffolds/index.ctp:87
 #: View/Scaffolds/view.ctp:61;74
 msgid "List %s"
 msgstr ""
 
-#: View/Scaffolds/index.ctp:48
-#: View/Scaffolds/view.ctp:163
+#: View/Scaffolds/index.ctp:48 View/Scaffolds/view.ctp:163
 msgid "View"
 msgstr ""
 
-#: View/Scaffolds/index.ctp:49
-#: View/Scaffolds/view.ctp:169
+#: View/Scaffolds/index.ctp:49 View/Scaffolds/view.ctp:169
 msgid "Edit"
 msgstr ""
 
 #: View/Scaffolds/index.ctp:65
-msgid "Page {:page} of {:pages}, showing {:current} records out of {:count} total, starting on record {:start}, ending on {:end}"
+msgid ""
+"Page {:page} of {:pages}, showing {:current} records out of {:count} total, "
+"starting on record {:start}, ending on {:end}"
 msgstr ""
 
 #: View/Scaffolds/index.ctp:70
@@ -390,4 +380,3 @@ msgstr ""
 #: View/Scaffolds/view.ctp:95;135
 msgid "Related %s"
 msgstr ""
-
