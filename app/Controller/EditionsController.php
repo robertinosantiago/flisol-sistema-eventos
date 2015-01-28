@@ -35,6 +35,8 @@ class EditionsController extends AppController {
 
         $records = $this->paginate('Edition');
         $this->set('records', $records);
+        
+        $this->log(__('Acessando o index do edition'));
     }
     
     public function form() {
