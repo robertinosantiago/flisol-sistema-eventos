@@ -14,7 +14,7 @@ App::uses('AppModel', 'Model');
  */
 class Coordinator extends AppModel {
 
-    public $actsAs = array('DateFormat');
+    public $actsAs = array('DateFormat', 'Certificable');
     public $belongsTo = array('Edition');
     public $hasMany = array('CoordinatorUser');
     
@@ -170,96 +170,6 @@ class Coordinator extends AppModel {
             return $record[0]['quantity'];
         }
         return 0;
-    }
-    
-    public function base64_file($edition_id) {
-        $options = array(
-            'fields' => array('Coordinator.file_certificate'),
-            'conditions' => array('Coordinator.edition_id' => $edition_id),
-            'recursive' => -1
-        );
-        $record = $this->find('first', $options);
-        if ($record) {
-            $path = APP . 'Certificates'. DS . $record['Coordinator']['file_certificate'];
-            $type = pathinfo($path, PATHINFO_EXTENSION);
-            $data = file_get_contents($path);
-            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-            return $base64;
-        }
-        return false;
-    }
-
-    public function beforeSave($options = array()) {
-        if (isset($this->data['Coordinator']['file_certificate']) && !empty($this->data['Coordinator']['file_certificate']) && $this->data['Coordinator']['file_certificate']['error'] == 0) {
-            $this->data['Coordinator']['file_certificate'] = $this->upload($this->data['Coordinator']['edition_id'], $this->data['Coordinator']['file_certificate']);
-        } else {
-           unset($this->data['Coordinator']['file_certificate']); 
-        }
-        
-        if (isset($this->data['Coordinator']['fullname_position']) && !empty($this->data['Coordinator']['fullname_position'])) {
-            
-        }
-        
-        return parent::beforeSave($options);
-    }
-
-    private function upload($edition_id, $image = array(), $directory = 'Certificates') {
-        $directory = APP . $directory . DS;
-
-        if ($image['error'] != 0 && $image['size'] == 0) {
-            throw new Exception(__('File not sent to server'));
-        }
-
-        $this->verifyDirectory($directory);
-
-        $image = $this->verifyName($edition_id, $image, $directory);
-
-        $this->moveFile($image, $directory);
-
-        return $image['name'];
-    }
-
-    private function verifyDirectory($directory) {
-        App::uses('Folder', 'Utility');
-        $folder = new Folder();
-        if (!is_dir($directory)) {
-            $folder->create($directory);
-        }
-    }
-
-    private function verifyName($edition_id, $image, $directory) {
-        $extension = $this->getExtension($image);
-        $image_info = pathinfo($directory . 'edition-' . $edition_id . '-coordinator' . $extension);
-        $image_name = $image_info['filename'] . $extension;
-        $image['name'] = $image_name;
-        return $image;
-    }
-
-    private function moveFile($image, $directory) {
-        App::uses('File', 'Utility');
-        $file = new File($image['tmp_name']);
-        $file->copy($directory . $image['name']);
-        $file->close();
-    }
-    
-    private function getExtension($image) {
-        $jpg = array('image/jpg', 'image/jpeg', 'image/pjpeg');
-        $png = array('image/png');
-        $gif = array('image/gif');
-        $svg = array('image/svg+xml');
-        if (in_array($image['type'], $jpg)) {
-            return '.jpg';
-        }
-        if (in_array($image['type'], $png)) {
-            return '.png';
-        }
-        if (in_array($image['type'], $gif)) {
-            return '.gif';
-        }
-        if (in_array($image['type'], $svg)) {
-            return '.svg';
-        }
-        return '.error';
     }
     
 }

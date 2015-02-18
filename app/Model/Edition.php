@@ -16,6 +16,7 @@ class Edition extends AppModel {
 
     //public $actsAs = array('DateFormat');
     public $hasOne = array('Listener', 'Coordinator', 'Presenter');
+    public $hasMany = array('Course');
     public $validate = array(
         'year' => array('rule' => 'notEmpty', 'required' => 'create'),
         'registration_begin' => array('rule' => 'notEmpty', 'required' => 'create'),

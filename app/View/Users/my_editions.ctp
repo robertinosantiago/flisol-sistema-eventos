@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 ?>
-<h1><?php echo __('My Events'); ?></h1>
+<h1><?php echo __('My participation'); ?></h1>
 
 <div class="panel panel-default">
     <div class="panel-heading"><h3><?php echo __('Participation as a listener') ?></h3></div>

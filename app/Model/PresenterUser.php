@@ -14,6 +14,7 @@ App::uses('AppModel', 'Model');
  */
 class PresenterUser extends AppModel {
     
+    public $actsAs = array('Verificable');
     public $belongsTo = array('User', 'Presenter');
     
     public function getPresenterUser($presenter_id, $user_id) {
@@ -26,15 +27,6 @@ class PresenterUser extends AppModel {
             'recursive' => -1
         );
         return $this->find('first', $options);
-    }
-    
-    public function beforeSave($options = array()) {
-        if (array_key_exists('id', $this->data['PresenterUser']) && empty($this->data['PresenterUser']['id'])) {
-            $date = new DateTime('now');
-            $hasher = new HmacPasswordHasher();
-            $this->data['PresenterUser']['hash_code'] = $hasher->hash(rand() . $date->format('YmdHis'));
-        }
-        return parent::beforeSave($options);
     }
     
 }

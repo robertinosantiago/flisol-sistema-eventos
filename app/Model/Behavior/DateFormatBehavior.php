@@ -3,36 +3,42 @@
 App::uses('AppModel', 'Model');
 APP::uses('ModelBehavior', 'Model');
 
-
 class DateFormatBehavior extends ModelBehavior {
-    
+
     public function afterFind(Model $model, $results, $primary = false) {
         $res = array();
-        
+
         foreach ($results as $key => $value) {
-            
             if (is_array($value)) {
                 $res[$key] = self::afterFind($model, $value, $primary);
             } else {
-                $columns = $model->getColumnTypes();
-                foreach ($columns as $column => $type) {
-                    if ($type != 'date') unset($columns[$column]);
-                }
-                
-                if (array_key_exists($key, $columns)) {
-                    foreach ($columns as $column => $type) {
-                        $res[$column] = $this->__toDate($value);
-                    }
-                } else {
-                    $res[$key] = $value;
-                }
+                $columns = $this->verifyColumns($model->getColumnTypes());
+                $this->convertDate($key, $columns, $value, $res);
             }
         }
-        
+
         return $res;
     }
-    
-    
+
+    private function verifyColumns($columns) {
+        foreach ($columns as $column => $type) {
+            if ($type != 'date') {
+                unset($columns[$column]);
+            }
+        }
+        return $columns;
+    }
+
+    private function convertDate($key, $columns, $value, &$res) {
+        if (array_key_exists($key, $columns)) {
+            foreach ($columns as $column => $type) {
+                $res[$column] = $this->__toDate($value);
+            }
+        } else {
+            $res[$key] = $value;
+        }
+    }
+
     private function __toDate($date, $fromFormat = 'Y-m-d', $toFormat = 'd/m/Y') {
         $schedule = $date;
         $schedule_format = str_replace(array('Y', 'm', 'd', 'H', 'i', 'a'), array('%Y', '%m', '%d', '%I', '%M', '%p'), $fromFormat);
@@ -46,6 +52,5 @@ class DateFormatBehavior extends ModelBehavior {
 
         return $new_schedule->format($toFormat);
     }
-    
-    
+
 }

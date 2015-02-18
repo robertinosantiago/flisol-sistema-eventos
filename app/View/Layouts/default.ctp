@@ -66,7 +66,7 @@
                 <div class="navbar-collapse collapse">
                     <?php if ($authUser): ?>
                         <ul class="nav navbar-nav">
-                            <li><?php echo $this->Html->link(__('My events'), array('controller' => 'Users', 'action' => 'myEvents')); ?></li>
+                            <li><?php echo $this->Html->link(__('My participation'), array('controller' => 'Users', 'action' => 'myEditions')); ?></li>
                         </ul>
                     
                         <?php if (isset($authUser) && $authUser['role'] === 'admin'): ?>
@@ -74,7 +74,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Record'); ?> <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><?php echo $this->Html->link(__('Events'), array('controller' => 'Events', 'action' => 'index')); ?></li>
+                                    <li><?php echo $this->Html->link(__('Editions'), array('controller' => 'Editions', 'action' => 'index')); ?></li>
                                     <li><?php echo $this->Html->link(__('Users'), array('controller' => 'Users', 'action' => 'index')); ?></li>
                                 </ul>
                             </li>

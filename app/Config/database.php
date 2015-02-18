@@ -68,9 +68,9 @@ class DATABASE_CONFIG {
 		'datasource' => 'Database/Mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'your_user',
-		'password' => 'your_password_',
-		'database' => 'your_database_',
+		'login' => 'root',
+		'password' => '123456',
+		'database' => 'flisol-event',
 		'prefix' => 'fli_',
 		//'encoding' => 'utf8',
 	);

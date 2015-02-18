@@ -114,7 +114,6 @@ class User extends AppModel {
         if (isset($this->data['User']['id']) && empty($this->data['User']['id'])) {
             $date = new DateTime('now');
             $this->data['User']['hash_code_verified'] = $hasher->hash(rand() . $date->format('YmdHisu'));
-            //$this->data['User']['hash_code_verified'] = $hasher->hash(rand() . $date->getTimestamp());
         }
 
         return parent::beforeSave();

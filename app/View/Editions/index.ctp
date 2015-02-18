@@ -44,6 +44,7 @@
             <th class="acoes text-center"></th>
             <th class="acoes text-center"></th>
             <th class="acoes text-center"></th>
+            <th class="acoes text-center"></th>
         </tr>
     </thead>
     <tbody>
@@ -77,6 +78,9 @@
                 <td class="text-center">                
                     <?php echo $this->Form->postLink(__("<i class='fa fa-users'></i>"), array('action' => 'peoples', $record['Edition']['id']), array('class' => 'btn btn-sm btn-success', 'title' => __('Manage peoples'), 'escape' => false)); ?>
                 </td>
+                <td class="text-center">                
+                    <?php echo $this->Form->postLink(__("<i class='fa fa-graduation-cap'></i>"), array('action' => 'courses', $record['Edition']['id']), array('class' => 'btn btn-sm btn-success', 'title' => __('Manage courses'), 'escape' => false)); ?>
+                </td>
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -84,13 +88,13 @@
     <tfoot>
         <?php if (!empty($records)): ?>
         <tr>
-            <th class="esquerda" colspan="11">
+            <th class="esquerda" colspan="12">
                 <button class="btn btn-sm btn-danger" type="submit">
                     <i class="fa fa-trash-o"></i> <?php echo __('Delete selected'); ?>
                 </button>
             </th>
         </tr>
-            <td colspan="11">
+            <td colspan="12">
                 <ul class="pagination pagination-sm">
                     <?php echo $this->Paginator->numbers(array('first' => 3, 'last' => 3, 'ellipsis' => '<li class="disabled"><a>...</a></li>', 'tag' => 'li', 'currentTag' => 'a', 'currentClass' => 'active', 'modulus' => 2, 'separator' => false)); ?>
                 </ul>

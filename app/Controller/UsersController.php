@@ -178,7 +178,7 @@ class UsersController extends AppController {
         return $this->redirect($this->Session->read('urlBack'));
     }
 
-    public function myEvents() {
+    public function myEditions() {
         $user = $this->Auth->user();
 
         $listeners = $this->Listener->getListenerByUser($user['id']);
@@ -406,7 +406,7 @@ class UsersController extends AppController {
             return true;
         }
 
-        if ($this->action === 'myEvents') {
+        if ($this->action === 'myEditions') {
             return true;
         }
 

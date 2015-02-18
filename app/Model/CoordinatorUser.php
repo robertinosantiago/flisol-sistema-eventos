@@ -7,7 +7,6 @@
  */
 
 App::uses('AppModel', 'Model');
-App::uses('HmacPasswordHasher', 'Controller/Component/Auth');
 
 /**
  * CakePHP CoordinatorUser
@@ -15,6 +14,7 @@ App::uses('HmacPasswordHasher', 'Controller/Component/Auth');
  */
 class CoordinatorUser extends AppModel {
 
+    public $actsAs = array('Verificable');
     public $belongsTo = array('User', 'Coordinator');
     
     public function getCoordinatorUser($coordinator_id, $user_id) {
@@ -36,15 +36,6 @@ class CoordinatorUser extends AppModel {
             'recursive' => -1
         );
         return $this->find('first', $options);
-    }
-
-    public function beforeSave($options = array()) {
-        if (array_key_exists('id', $this->data['CoordinatorUser']) && empty($this->data['CoordinatorUser']['id'])) {
-            $date = new DateTime('now');
-            $hasher = new HmacPasswordHasher();
-            $this->data['CoordinatorUser']['hash_code'] = $hasher->hash(rand() . $date->format('YmdHis'));
-        }
-        return parent::beforeSave($options);
     }
 
 }

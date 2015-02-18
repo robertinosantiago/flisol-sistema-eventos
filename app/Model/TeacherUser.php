@@ -9,20 +9,20 @@
 App::uses('AppModel', 'Model');
 
 /**
- * CakePHP ListenerUser
- * @author robertino
+ * CakePHP TeacherUser
+ * @author robert
  */
-class ListenerUser extends AppModel {
+class TeacherUser extends AppModel {
     
     public $actsAs = array('Verificable');
-    public $belongsTo = array('User', 'Listener');
+    public $belongsTo = array('User', 'Teacher');
     
-    public function getListenerUser($listener_id, $user_id) {
+    public function getTeacherUser($teacher_id, $user_id) {
         $options = array(
-            'fields' => array('ListenerUser.id', 'ListenerUser.attended', 'ListenerUser.hash_code'),
+            'fields' => array('TeacherUser.id', 'TeacherUser.hash_code'),
             'conditions' => array(
-                'ListenerUser.listener_id' => $listener_id,
-                'ListenerUser.user_id' => $user_id
+                'TeacherUser.teacher_id' => $teacher_id,
+                'TeacherUser.user_id' => $user_id
             ),
             'recursive' => -1
         );

@@ -15,7 +15,7 @@ App::uses('AppController', 'Controller');
  */
 class EditionsController extends AppController {
     
-    public $uses = array('Edition', 'User', 'Coordinator', 'CoordinatorUser', 'Presenter', 'PresenterUser', 'Listener', 'ListenerUser');
+    public $uses = array('Edition', 'User', 'Coordinator', 'CoordinatorUser', 'Presenter', 'PresenterUser', 'Listener', 'ListenerUser', 'Course');
     public $helpers = array('SearchBox');
     public $components = array('Session', 'Crud', 'RequestHandler');
     public $paginate = array();
@@ -117,6 +117,39 @@ class EditionsController extends AppController {
         }
         return $this->redirect($this->Session->read('urlBack'));
     }
+    
+    public function courses($id = null) {
+        $this->setTitle(__('Edition'));
+        $this->Session->write('urlBack', $this->referer());
+
+        if (!$this->Edition->exists($id)) {
+            throw new NotFoundException(__('Record not found'));
+        }
+        
+        $edition = $this->Edition->getEdition($id);
+        $courses = $this->Course->loadCoursesByEdition($edition['Edition']['id']);
+        
+        $this->set('edition', $edition);
+        $this->set('records', $courses);
+        
+    }
+    
+    public function formCourse($id = null) {
+        $this->setTitle(__('Course'));
+        $this->Session->write('urlBack', $this->referer());
+        
+        if (!$this->Edition->exists($id)) {
+            throw new NotFoundException(__('Record not found'));
+        }
+        
+        $edition = $this->Edition->getEdition($id);
+        $this->set('edition', $edition);
+    }
+    
+    public function saveCourse($id = null) {
+        $this->Crud->saveData($this->Course, $this->request->data);
+    }
+    
     
     public function peoples($id = null) {
         $this->setTitle(__('Edition'));

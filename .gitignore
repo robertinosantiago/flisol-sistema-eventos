@@ -22,3 +22,4 @@ app/[Cc]onfig/database.php
 Icon?
 ehthumbs.db
 Thumbs.db
+/app/Certificates/
