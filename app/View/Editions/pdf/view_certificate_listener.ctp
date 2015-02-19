@@ -5,7 +5,7 @@
     <div class="certificate-auth" style="margin: 0; padding: 0; border: 0;">
         <h5 style="margin: 0; padding: 0; border: 0; position: absolute; top: 96%">
             <?php echo __('The authenticity of this document may be verified at this link:'); ?><br>
-            <?php echo $this->Html->url(array('controller' => 'Events', 'action' => 'verifyCertificate', 'listener', $listener['Listener']['id'], $listenerUser['ListenerUser']['hash_code']), true); ?>
+            <?php echo $this->Html->url(array('controller' => 'Editions', 'action' => 'verifyCertificate', 'listener', $listener['Listener']['id'], $listenerUser['ListenerUser']['hash_code']), true); ?>
         </h5>
     </div>
 
@@ -18,7 +18,7 @@
     <div class="certificate-auth" style="margin: 0; padding: 0; border: 0;">
         <h5 style="margin: 0; padding: 0; border: 0; position: absolute; top: 96%">
             <?php echo __('The authenticity of this document may be verified at this link:'); ?><br>
-            <?php echo $this->Html->url(array('controller' => 'Events', 'action' => 'verifyCertificate', 'listener', $listener['Listener']['id'], $listenerUser['ListenerUser']['hash_code']), true); ?>
+            <?php echo $this->Html->url(array('controller' => 'Editions', 'action' => 'verifyCertificate', 'listener', $listener['Listener']['id'], $listenerUser['ListenerUser']['hash_code']), true); ?>
         </h5>
     </div>
 </div>

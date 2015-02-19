@@ -57,7 +57,7 @@ class CertificableBehavior extends ModelBehavior {
     private function verifyName($image, $directory, $name) {
         $hasher = new LitlePasswordHasher();
         $extension = $this->getExtension($image);
-        $image_info = pathinfo($directory . $name . '-' . $hasher->hash(time(). rand()). $extension);
+        $image_info = pathinfo($directory . $name . '-' . $hasher->hash(time() . rand()) . $extension);
         $image_name = $image_info['filename'] . $extension;
         $image['name'] = $image_name;
         return $image;
@@ -93,13 +93,13 @@ class CertificableBehavior extends ModelBehavior {
     /**
      * @todo Ajustar para funcionar para Students e Teachers que não possuem edition_id
      * @param Model $model
-     * @param type $edition_id
+     * @param type $id
      * @return string|boolean
      */
-    public function base64_file(Model $model, $edition_id) {
+    public function base64_file(Model $model, $id, $field = 'edition_id') {
         $options = array(
             'fields' => array($model->alias . '.file_certificate'),
-            'conditions' => array($model->alias . '.edition_id' => $edition_id),
+            'conditions' => array($model->alias . '.' . $field => $id),
             'recursive' => -1
         );
         $record = $model->find('first', $options);

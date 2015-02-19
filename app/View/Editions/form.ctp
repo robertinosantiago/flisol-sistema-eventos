@@ -84,7 +84,24 @@
 <?php echo $this->Form->end(); ?>
 
 <?php $this->start('scripts'); ?>
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js" type="text/javascript"></script>
+<?php echo $this->Html->script('tinymce-lang/pt_BR.js'); ?>
 
+<script type="text/javascript">
+
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist image lists table paste textcolor colorpicker"
+        ],
+        image_advtab: true,
+        toolbar1: "fontselect fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | forecolor backcolor | undo redo",
+        toolbar2: "cut copy paste | bullist numlist | image | table",
+        menubar: false,
+        toolbar_items_size: 'small'
+    });
+
+</script>
 <?php $this->end(); ?>
 
 

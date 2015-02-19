@@ -15,7 +15,7 @@ App::uses('AppController', 'Controller');
  */
 class EditionsController extends AppController {
     
-    public $uses = array('Edition', 'User', 'Coordinator', 'CoordinatorUser', 'Presenter', 'PresenterUser', 'Listener', 'ListenerUser', 'Course');
+    public $uses = array('Edition', 'User', 'Coordinator', 'CoordinatorUser', 'Presenter', 'PresenterUser', 'Listener', 'ListenerUser', 'Course', 'Teacher', 'Student');
     public $helpers = array('SearchBox');
     public $components = array('Session', 'Crud', 'RequestHandler');
     public $paginate = array();
@@ -148,6 +148,26 @@ class EditionsController extends AppController {
     
     public function saveCourse($id = null) {
         $this->Crud->saveData($this->Course, $this->request->data);
+    }
+    
+    public function updateCourse($id = null) {
+        $this->Session->write('urlBack', $this->referer());
+        $this->setTitle(__('Course'));
+        $this->Crud->loadData($this->Course, $id, false);
+        $this->set('course_id', $this->request->data['Course']['id']);
+        $this->set('showButtonTeacher', (empty($this->request->data['Teacher']['file_certificate']) ? false : true));
+        $this->set('showButtonStudent', (empty($this->request->data['Student']['file_certificate']) ? false : true));
+    }
+    
+    public function saveFileCourse($id = null) {
+        $this->Course->create();
+        if ($this->Course->saveAll($this->request->data, array('validate' => 'first'))) {
+            $this->Session->setFlash(__('Successfully saved'), 'flash_success');
+            return $this->redirect($this->Session->read('urlBack'));
+        } else {
+            $this->Session->setFlash(__('Unable to save the record'), 'flash_error');
+            $this->render('/Editions/updateCourse');
+        }
     }
     
     
@@ -289,6 +309,38 @@ class EditionsController extends AppController {
             throw new NotFoundException(__('Record not found'));
         }
         $base64 = $this->Presenter->base64_file($id);
+
+        if ($base64) {
+            $this->set('base64', $base64);
+            $this->set('error', false);
+        } else {
+            $this->set('base64', null);
+            $this->set('error', true);
+        }
+    }
+    
+    public function viewTeacherImage($id = null) {
+        $this->autoLayout = false;
+        if (!$this->Course->exists($id)) {
+            throw new NotFoundException(__('Record not found'));
+        }
+        $base64 = $this->Teacher->base64_file($id, 'course_id');
+
+        if ($base64) {
+            $this->set('base64', $base64);
+            $this->set('error', false);
+        } else {
+            $this->set('base64', null);
+            $this->set('error', true);
+        }
+    }
+    
+    public function viewStudentImage($id = null) {
+        $this->autoLayout = false;
+        if (!$this->Course->exists($id)) {
+            throw new NotFoundException(__('Record not found'));
+        }
+        $base64 = $this->Student->base64_file($id, 'course_id');
 
         if ($base64) {
             $this->set('base64', $base64);

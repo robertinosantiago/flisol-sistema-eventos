@@ -18,5 +18,4 @@ class Teacher extends AppModel {
     public $belongsTo = array('Course');
     public $hasMany = array('TeacherUser');
 
-
 }

@@ -152,39 +152,24 @@
 
 
 <?php $this->start('scripts'); ?>
-<?php echo $this->Html->script('jquery.mask.min'); ?>
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js" type="text/javascript"></script>
+<?php echo $this->Html->script('tinymce-lang/pt_BR.js'); ?>
 
-<script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script> <script type="text/javascript">
-//<![CDATA[
-    bkLib.onDomLoaded(function () {
-        new nicEditor({
-            buttonList: [
-                'bold', 'italic', 'underline', 'left', 'center', 'right', 'justify',
-                'ol', 'ul', 'subscript', 'superscript', 'hr', 'forecolor', 'bgcolor',
-                'link', 'unlink'
-            ]}).panelInstance('EditionDescription');
-        new nicEditor({
-            buttonList: [
-                'bold', 'italic', 'underline', 'left', 'center', 'right', 'justify',
-                'ol', 'ul', 'subscript', 'superscript', 'hr', 'forecolor', 'bgcolor',
-                'link', 'unlink'
-            ]}).panelInstance('ListenerBackContent');
-        new nicEditor({
-            buttonList: [
-                'bold', 'italic', 'underline', 'left', 'center', 'right', 'justify',
-                'ol', 'ul', 'subscript', 'superscript', 'hr', 'forecolor', 'bgcolor',
-                'link', 'unlink'
-            ]}).panelInstance('CoordinatorBackContent');
-        new nicEditor({
-            buttonList: [
-                'bold', 'italic', 'underline', 'left', 'center', 'right', 'justify',
-                'ol', 'ul', 'subscript', 'superscript', 'hr', 'forecolor', 'bgcolor',
-                'link', 'unlink'
-            ]}).panelInstance('PresenterBackContent');
+<script type="text/javascript">
+
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist image lists table paste textcolor colorpicker"
+        ],
+        image_advtab: true,
+        toolbar1: "fontselect fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | forecolor backcolor | undo redo",
+        toolbar2: "cut copy paste | bullist numlist | image | table",
+        menubar: false,
+        toolbar_items_size: 'small'
     });
-//]]>
-</script>
 
+</script>
 <?php $this->end(); ?>
 
 <div class="modal fade" id="modalListenerPreview" tabindex="-1" role="dialog" aria-labelledby="modalListenerTitle" aria-hidden="true">
