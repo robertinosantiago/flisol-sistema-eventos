@@ -1,4 +1,5 @@
 <?php
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -38,7 +39,7 @@
         <?php echo $this->Form->input('Teacher.file_certificate', array('label' => __('File of teachers certificate image'), 'type' => 'file', 'div' => 'form-group')); ?>
         <?php echo $this->Form->input('Teacher.fullname_position', array('label' => __('Fullname position (in pixels) in relation to the certificate of teachers'), 'class' => 'form-control', 'div' => 'form-group', 'required' => true)); ?>
         <?php echo $this->Form->input('Teacher.has_back', array('label' => __('Has content on the back of certificate?'), 'options' => array(0 => __('No'), 1 => __('Yes')), 'default' => 0, 'class' => 'form-control', 'div' => 'form-group', 'required' => true)); ?>
-        <?php echo $this->Form->input('Teacher.back_content', array('label' => __('Content of back of certificate'), 'class' => 'form-control', 'div' => 'form-group')); ?>
+        <?php echo $this->Form->input('Teacher.back_content', array('label' => __('Content of back of certificate'), 'type' => 'textarea', 'class' => 'form-control', 'div' => 'form-group')); ?>
     </div>
 </div>
 
@@ -50,7 +51,7 @@
         <?php echo $this->Form->input('Student.file_certificate', array('label' => __('File of students certificate image'), 'type' => 'file', 'div' => 'form-group')); ?>
         <?php echo $this->Form->input('Student.fullname_position', array('label' => __('Fullname position (in pixels) in relation to the certificate of students'), 'class' => 'form-control', 'div' => 'form-group')); ?>
         <?php echo $this->Form->input('Student.has_back', array('label' => __('Has content on the back of certificate?'), 'options' => array(0 => __('No'), 1 => __('Yes')), 'default' => 0, 'class' => 'form-control', 'div' => 'form-group', 'required' => true)); ?>
-        <?php echo $this->Form->input('Student.back_content', array('label' => __('Content of back of certificate'), 'class' => 'form-control', 'div' => 'form-group')); ?>
+        <?php echo $this->Form->input('Student.back_content', array('label' => __('Content of back of certificate'), 'type' => 'textarea', 'class' => 'form-control', 'div' => 'form-group')); ?>
     </div>
 </div>
 
@@ -70,7 +71,24 @@
 <?php echo $this->Form->end(); ?>
 
 <?php $this->start('scripts'); ?>
+<script src="//tinymce.cachefly.net/4.1/tinymce.min.js" type="text/javascript"></script>
+<?php echo $this->Html->script('tinymce-lang/pt_BR.js'); ?>
 
+<script type="text/javascript">
+
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist image lists table paste textcolor colorpicker"
+        ],
+        image_advtab: true,
+        toolbar1: "fontselect fontsizeselect | bold italic underline | alignleft aligncenter alignright alignjustify | forecolor backcolor | undo redo",
+        toolbar2: "cut copy paste | bullist numlist | image | table",
+        menubar: false,
+        toolbar_items_size: 'small'
+    });
+
+</script>
 <?php $this->end(); ?>
 
 
