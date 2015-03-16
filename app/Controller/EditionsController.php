@@ -39,6 +39,14 @@ class EditionsController extends AppController {
         $this->log(__('Acessando o index do edition'));
     }
     
+    public function home() {
+        $this->setTitle(__('Editions'));
+        
+        $editions = $this->Edition->getEditionsActualYear();
+        
+        $this->set('editions', $editions);
+    }
+    
     public function form() {
         $this->setTitle(__('Edition'));
         $this->Session->write('urlBack', $this->referer());
@@ -86,8 +94,8 @@ class EditionsController extends AppController {
             throw new NotFoundException(__('Record not found'));
         }
 
-        $event = $this->Edition->getEvent($id);
-        $this->set('event', $event);
+        $edition = $this->Edition->getEdition($id);
+        $this->set('edition', $edition);
 
 
         $user = $this->Auth->user();
@@ -96,11 +104,12 @@ class EditionsController extends AppController {
             $this->Session->setFlash(__('You are already registered in this event'), 'flash_error');
         } else {
             $listenerUser = array(
+                'id' => '',
                 'user_id' => $user['id'],
-                'listener_id' => $event['Listener']['id']
+                'listener_id' => $edition['Listener']['id']
             );
             if ($this->ListenerUser->saveAll($listenerUser, array('validate' => 'first'))) {
-                $this->Session->setFlash(__('Your registration has been successful'), 'flash_success');
+                $this->Session->setFlash(__('Your registration in this edition of FLISoL has been successful'), 'flash_success');
             }
         }
     }
@@ -621,13 +630,13 @@ class EditionsController extends AppController {
 
     private function __sendEmailCertificate($to, $vars) {
         $email = new CakeEmail();
-        $email->config('ufpr');
+        $email->config('flisoljs');
         $email->template('certificate');
         $email->emailFormat('html');
         $email->helpers(array('Html'));
         $email->viewVars($vars);
         $email->to($to);
-        $email->subject(__('UFPR - Certificate'));
+        $email->subject(__('FLISOL - Certificate'));
         $email->send();
     }
 

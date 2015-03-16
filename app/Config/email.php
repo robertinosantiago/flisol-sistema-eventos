@@ -101,5 +101,16 @@ class EmailConfig {
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
+        
+        public $flisoljs = array(
+            'host' => 'ssl://nuvem10.hoteldaweb.com.br',
+            'transport' => 'Smtp',
+            'port' => 465,
+            'timeout' => 30,
+            'username' => 'robertino@flisoljs.info',
+            'password' => 'carlos00!',
+            'from' => array('robertino@flisoljs.info' => 'Robertino Mendes Santiago Jr')
+            //'tls' => true
+        );
 
 }

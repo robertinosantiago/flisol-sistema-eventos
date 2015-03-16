@@ -7,6 +7,7 @@
  */
 
 App::uses('AppModel', 'Model');
+App::uses('DateFormatBehavior', 'Model/Behavior');
 
 /**
  * CakePHP Edition
@@ -53,7 +54,7 @@ class Edition extends AppModel {
                     'table' => $this->tablePrefix . 'listeners',
                     'alias' => 'Listener',
                     'type' => 'inner',
-                    'conditions' => array('Edition.id = Listener.event_id')
+                    'conditions' => array('Edition.id = Listener.edition_id')
                 )
             ),
             'conditions' => array('Listener.id' => $listener_id),
@@ -70,7 +71,7 @@ class Edition extends AppModel {
                     'table' => $this->tablePrefix . 'presenters',
                     'alias' => 'Presenter',
                     'type' => 'inner',
-                    'conditions' => array('Edition.id = Presenter.event_id')
+                    'conditions' => array('Edition.id = Presenter.edition_id')
                 )
             ),
             'conditions' => array('Presenter.id' => $presenter_id),
@@ -87,7 +88,7 @@ class Edition extends AppModel {
                     'table' => $this->tablePrefix . 'coordinators',
                     'alias' => 'Coordinator',
                     'type' => 'inner',
-                    'conditions' => array('Edition.id = Coordinator.event_id')
+                    'conditions' => array('Edition.id = Coordinator.edition_id')
                 )
             ),
             'conditions' => array('Coordinator.id' => $coordinator_id),
@@ -96,18 +97,13 @@ class Edition extends AppModel {
         return $this->find('first', $options);
     }
 
-    /**
-     * 
-     * @todo retornar a edição atual pelo ano
-     */
-    public function getActiveEditions() {
-        $todayDate = new DateTime();
-        $today = $todayDate->format('Y-m-d');
+    public function getEditionsActualYear() {
+        $today = new DateTime();
+        $year = $today->format('Y-m-d');
         $options = array(
             'fields' => array('Edition.id', 'Edition.year', 'Edition.registration', 'Edition.date_of'),
             'conditions' => array(
-                'Edition.registration_begin <=' => $today,
-                'Edition.registration_end >=' => $today,
+                'Edition.year =' => $year,
                 'Edition.deleted = 0',
                 'Edition.active = 1'
             ),
@@ -121,27 +117,7 @@ class Edition extends AppModel {
         return $this->find('all', $options);
     }
 
-    public function getNextEditions() {
-        $todayDate = new DateTime();
-        $today = $todayDate->format('Y-m-d');
-        $options = array(
-            'fields' => array('Edition.id', 'Edition.year', 'Edition.registration', 'Edition.date_of'),
-            'conditions' => array(
-                'Edition.registration_begin >' => $today,
-                'Edition.deleted = 0'
-            ),
-            'order' => array(
-                'Edition.registration_end' => 'asc',
-                'Edition.date_of' => 'asc',
-                'Edition.year' => 'asc',
-                'Edition.active = 1'
-            ),
-            'recursive' => -1
-        );
-        return $this->find('all', $options);
-    }
-
-    public function isRegistered($event_id, $user_id) {
+    public function isRegistered($edition_id, $user_id) {
         $options = array(
             'fields' => array('Edition.id'),
             'joins' => array(
@@ -149,7 +125,7 @@ class Edition extends AppModel {
                     'table' => $this->tablePrefix . 'listeners',
                     'alias' => 'Listener',
                     'type' => 'inner',
-                    'conditions' => array('Edition.id = Listener.event_id')
+                    'conditions' => array('Edition.id = Listener.edition_id')
                 ),
                 array(
                     'table' => $this->tablePrefix . 'listener_users',
@@ -159,7 +135,7 @@ class Edition extends AppModel {
                 )
             ),
             'conditions' => array(
-                'Listener.event_id' => $event_id,
+                'Listener.edition_id' => $edition_id,
                 'ListenerUser.user_id' => $user_id
             ),
             'recursive' => -1
@@ -180,6 +156,10 @@ class Edition extends AppModel {
             }
             if (isset($value['Edition']['show_certificate'])) {
                 $results[$key]['Edition']['showCertificateText'] = ($results[$key]['Edition']['show_certificate'] ? __('Yes') : __('No'));
+            }
+            if (isset($value['Edition']['date_of'])) {
+                $formater = new DateFormatBehavior();
+                $results[$key]['Edition']['dateText'] = $formater->dateFormat($value['Edition']['date_of']);
             }
         }
         return parent::afterFind($results, $primary);

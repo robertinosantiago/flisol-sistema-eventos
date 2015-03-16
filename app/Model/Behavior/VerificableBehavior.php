@@ -20,7 +20,7 @@ class VerificableBehavior extends ModelBehavior {
             $hasher = new LitlePasswordHasher();
             $model->data[$model->alias]['hash_code'] = $hasher->hash(time(). rand());
         }
-        return parent::beforeSave($options);
+        return parent::beforeSave($model, $options);
     }
     
     

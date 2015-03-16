@@ -5,11 +5,10 @@
  * and open the template in the editor.
  */
 ?>
-<h1><?php echo $event['Edition']['year']; ?></h1>
+<h1><?php echo $edition['Edition']['year']; ?></h1>
 <div class="panel panel-default">
     <div class="panel-body">
-        <p><?php echo $event['Edition']['description']; ?></p>
-        <p class="small"><strong><?php echo __('Period of registration'); ?>: </strong><?php echo $event['Edition']['registration']; ?></p>
-        <p class="small"><strong><?php echo __('Date of event'); ?>: </strong><?php echo $event['Edition']['date_of']; ?></p>
+        <p class="small"><strong><?php echo __('Period of registration'); ?>: </strong><?php echo $edition['Edition']['registration']; ?></p>
+        <p class="small"><strong><?php echo __('Date of edition'); ?>: </strong><?php echo $edition['Edition']['dateText']; ?></p>
     </div>
 </div>

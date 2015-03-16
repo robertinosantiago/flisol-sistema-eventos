@@ -59,7 +59,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo $this->Html->url(array('controller' => 'Events', 'action' => 'home')); ?>">
+                    <a class="navbar-brand" href="<?php echo $this->Html->url(array('controller' => 'Editions', 'action' => 'home')); ?>">
                         <?php echo __('Events'); ?>
                     </a>
                 </div>

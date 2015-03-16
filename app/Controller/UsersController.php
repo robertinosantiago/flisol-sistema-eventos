@@ -156,7 +156,7 @@ class UsersController extends AppController {
 
                 $email = new CakeEmail();
 
-                $email->config('ufpr');
+                $email->config('flisoljs');
                 $email->template('confirmation');
                 $email->emailFormat('html');
                 $email->helpers(array('Html'));
@@ -203,7 +203,7 @@ class UsersController extends AppController {
                 $options = array('conditions' => array('User.' . $this->User->primaryKey => $this->User->id));
                 $record = $this->User->find('first', $options);
                 $email = new CakeEmail();
-                $email->config('ufpr');
+                $email->config('flisoljs');
                 $email->template('register');
                 $email->emailFormat('html');
                 $email->helpers(array('Html'));
@@ -242,7 +242,7 @@ class UsersController extends AppController {
                     if ($this->User->saveAll($record)) {
 
                         $email = new CakeEmail();
-                        $email->config('ufpr');
+                        $email->config('flisoljs');
                         $email->template('confirmation');
                         $email->emailFormat('html');
                         $email->helpers(array('Html'));
@@ -319,7 +319,7 @@ class UsersController extends AppController {
                 $record['User']['password'] = $password;
                 if ($this->User->saveAll($record)) {
                     $email = new CakeEmail();
-                    $email->config('ufpr');
+                    $email->config('flisoljs');
                     $email->template('resetpassword');
                     $email->emailFormat('html');
                     $email->helpers(array('Html'));

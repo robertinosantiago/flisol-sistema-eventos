@@ -10,11 +10,10 @@
 
 <p><?php echo __('To access the system, please click on link below.') ?></p>
 <p>
-    <?php echo $this->Html->link(__('Access the system'), array('controller' => 'Events', 'action' => 'home', 'full_base' => true)); ?>
+    <?php echo $this->Html->link(__('Access the system'), array('controller' => 'Editions', 'action' => 'home', 'full_base' => true)); ?>
 </p>
-<p><?php echo __('Or copy and paste this link in our browser: %s', $this->Html->url(array('controller' => 'Events', 'action' => 'home', 'full_base' => true), true)); ?></p>
+<p><?php echo __('Or copy and paste this link in our browser: %s', $this->Html->url(array('controller' => 'Editions', 'action' => 'home', 'full_base' => true), true)); ?></p>
 
 <hr>
-<h5><?php echo __('Sistema de Gerenciamento de Eventos'); ?></h5>
-<h6><?php echo __('Universidade Federal do Paraná'); ?></h6>
-<h6><?php echo __('Campus Avançado de Jandaia do Sul'); ?></h6>
+<h5><?php echo __('FLISoL - Festival Latino-americano de Instalação de Software Livre'); ?></h5>
+<h6><?php echo __('Jandaia do Sul - Paraná - Brasil'); ?></h6>

@@ -32,14 +32,14 @@ class DateFormatBehavior extends ModelBehavior {
     private function convertDate($key, $columns, $value, &$res) {
         if (array_key_exists($key, $columns)) {
             foreach ($columns as $column => $type) {
-                $res[$column] = $this->__toDate($value);
+                $res[$column] = $this->dateFormat($value);
             }
         } else {
             $res[$key] = $value;
         }
     }
 
-    private function __toDate($date, $fromFormat = 'Y-m-d', $toFormat = 'd/m/Y') {
+    public function dateFormat($date, $fromFormat = 'Y-m-d', $toFormat = 'd/m/Y') {
         $schedule = $date;
         $schedule_format = str_replace(array('Y', 'm', 'd', 'H', 'i', 'a'), array('%Y', '%m', '%d', '%I', '%M', '%p'), $fromFormat);
         $ugly = strptime($schedule, $schedule_format);
