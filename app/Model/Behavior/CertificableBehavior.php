@@ -17,7 +17,7 @@ App::uses('LitlePasswordHasher', 'Controller/Component/Auth');
  */
 class CertificableBehavior extends ModelBehavior {
 
-    public function beforeSave(\Model $model, $options = array()) {
+    public function beforeSave(Model $model, $options = array()) {
 
         if (isset($model->data[$model->alias]['file_certificate']) && !empty($model->data[$model->alias]['file_certificate']) && $model->data[$model->alias]['file_certificate']['error'] == 0) {
             $model->data[$model->alias]['file_certificate'] = $this->upload($model->alias, $model->data[$model->alias]['file_certificate']);

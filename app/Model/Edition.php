@@ -148,7 +148,7 @@ class Edition extends AppModel {
         }
         return true;
     }
-
+    
     public function afterFind($results, $primary = false) {
         foreach ($results as $key => $value) {
             if (isset($value['Edition']['active'])) {

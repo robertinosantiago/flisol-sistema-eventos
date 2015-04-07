@@ -224,6 +224,12 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('1st step of registration is complete'), 'flash_success');
             } else {
                 $this->Session->setFlash(__('Unable to save the record'), 'flash_error');
+                $this->set('activeRecoverPassword', false);
+                
+                $errors = $this->User->validationErrors;
+                if (!empty($errors) && array_key_exists('email', $errors)) {
+                    $this->set('activeRecoverPassword', true);
+                }
                 $this->render('/Users/register');
             }
         }
@@ -360,7 +366,7 @@ class UsersController extends AppController {
             } else {
                 $this->Session->setFlash(__('User or old password wrong. Please try again.'), 'flash_error');
             }
-            return $this->redirect(array('controller' => 'Events', 'action' => 'home'));
+            return $this->redirect(array('controller' => 'Editions', 'action' => 'home'));
         } else {
             $user = $this->Auth->user();
             $record = $this->User->getUserById($user['id']);

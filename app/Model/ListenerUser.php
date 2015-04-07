@@ -29,4 +29,37 @@ class ListenerUser extends AppModel {
         return $this->find('first', $options);
     }
     
+    /**
+     * Check if a user is registered in a edition as a listener
+     * @param int $edition_id
+     * @param int $user_id
+     * @return boolean
+     */
+    public function isRegistered($edition_id, $user_id) {
+        $options = array(
+            'fields' => array('ListenerUser.id'),
+            'joins' => array(
+                array(
+                    'table' => $this->tablePrefix . 'listeners',
+                    'alias' => 'Listener',
+                    'type' => 'inner',
+                    'conditions' => 'Listener.id = ListenerUser.listener_id'
+                )
+            ),
+            'conditions' => array(
+                'Listener.edition_id' => $edition_id,
+                'ListenerUser.user_id' => $user_id
+            ),
+            'recursive' => -1
+        );
+        
+        $record = $this->find('first', $options);
+        
+        if (!empty($record)) {
+            return true;
+        }
+        
+        return false;
+    }
+    
 }

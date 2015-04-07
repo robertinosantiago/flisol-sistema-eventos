@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,7 +9,7 @@
 
 <div class="breadcrumb">
     <?php $this->Html->addCrumb(__('Editions'), '/Editions'); ?>
-    <?php $this->Html->addCrumb(__('Courses'), '/Editions/courses/'.$edition['Edition']['id']); ?>
+    <?php $this->Html->addCrumb(__('Courses'), '/Editions/courses/' . $edition['Edition']['id']); ?>
     <?php
     echo $this->Html->getCrumbs('&nbsp;/&nbsp;', array(
         'text' => $this->Html->tag('i', '', array('class' => 'fa fa-home')),
@@ -30,6 +29,7 @@
 <?php echo $this->Form->input('Course.title', array('label' => __('Title'), 'class' => 'form-control', 'div' => 'form-group')); ?>
 <?php echo $this->Form->input('Course.hours', array('label' => __('Hours'), 'class' => 'form-control', 'div' => 'form-group')); ?>
 <?php echo $this->Form->input('Course.maximum_of_students', array('label' => __('Maximum of students'), 'class' => 'form-control', 'div' => 'form-group')); ?>
+<?php echo $this->Form->input('Course.prerequisite', array('label' => __('Prerequisites'), 'type' => 'textarea', 'class' => 'form-control', 'div' => 'form-group')); ?>
 
 <div class="panel panel-default">
     <div class="panel-heading">

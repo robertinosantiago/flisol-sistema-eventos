@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,11 +28,12 @@
         <h3 class="panel-title"><?php echo __('Course Data') ?></h3>
     </div>
     <div class="panel-body">
-        <?php echo $this->Form->create(null, array('url' => array('controller' => 'Editions', 'action' => 'saveCourse'), 'role' => 'form', 'type' => 'file')); ?>
+        <?php echo $this->Form->create(null, array('url' => array('controller' => 'Editions', 'action' => 'saveCourse'), 'type' => 'post', 'role' => 'form')); ?>
 
         <?php echo $this->Form->input('Course.title', array('label' => __('Title'), 'class' => 'form-control', 'div' => 'form-group')); ?>
         <?php echo $this->Form->input('Course.hours', array('label' => __('Hours'), 'class' => 'form-control', 'div' => 'form-group')); ?>
         <?php echo $this->Form->input('Course.maximum_of_students', array('label' => __('Maximum of students'), 'class' => 'form-control', 'div' => 'form-group')); ?>
+        <?php echo $this->Form->input('Course.prerequisite', array('label' => __('Prerequisites'), 'type' => 'textarea', 'class' => 'form-control', 'div' => 'form-group')); ?>
 
         <?php echo $this->Form->hidden('Course.id'); ?>
 

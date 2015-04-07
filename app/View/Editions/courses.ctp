@@ -54,13 +54,13 @@
                 <td class="text-left"><?php echo $record['Course']['title']; ?></td>
                 <td class="text-center"><?php echo $record['Course']['hours']; ?></td>
                 <td class="text-center">
-                    <?php echo $this->Form->postLink(__("<i class='fa fa-pencil'></i>"), array('action' => 'updateCourse', $record['Course']['id']), array('class' => 'btn btn-sm btn-warning', 'title' => __('Update'), 'escape' => false)); ?>
+                    <?php echo $this->Form->postLink(__("<i class='fa fa-pencil'></i>"), array('action' => 'updateCourse', $record['Course']['id'], $edition['Edition']['id']), array('class' => 'btn btn-sm btn-warning', 'title' => __('Update'), 'escape' => false)); ?>
                 </td>
                 <td class="text-center">                    
                     <?php echo $this->Form->postLink(__("<i class='fa fa-trash-o'></i>"), array('action' => 'deleteCourse', $record['Course']['id']), array('class' => 'btn btn-sm btn-danger', 'title' => __('Delete'), 'escape' => false, 'confirm' => __('Are you sure?'))); ?>
                 </td>
                                 <td class="text-center">                
-                    <?php echo $this->Form->postLink(__("<i class='fa fa-users'></i>"), array('action' => 'peoplesCourse', $record['Course']['id']), array('class' => 'btn btn-sm btn-success', 'title' => __('Manage peoples'), 'escape' => false)); ?>
+                    <?php echo $this->Form->postLink(__("<i class='fa fa-users'></i>"), array('action' => 'peoplesCourse', $record['Course']['id'], $edition['Edition']['id']), array('class' => 'btn btn-sm btn-success', 'title' => __('Manage peoples'), 'escape' => false)); ?>
                 </td>
             </tr>
             <?php endforeach; ?>

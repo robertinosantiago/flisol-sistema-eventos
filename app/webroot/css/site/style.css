@@ -1,0 +1,144 @@
+body {
+    font-size: 12pt; 
+}
+.navbar {
+    border-radius: 0px;
+    border:0px;
+}
+
+.navbar .nav > li > a {
+    line-height: 55px;
+    font-size: 14pt;
+}
+
+#logo {
+    width:153px; 
+    height:92px; 
+    background: url("../../img/site/FLISoL-2015-preto.png") no-repeat 0 0;
+    margin-right: 30px;
+}
+
+#colaboradores {
+    background-color: #fff;
+}
+
+#colaboradores ul {
+    margin-bottom: 0;
+}
+
+#apoio img {
+    padding: 5px 0;
+}
+
+#sobre {
+    padding-top: 125px;
+    background: none repeat scroll 0% 0% #709e3f;
+    color: #fff;
+}
+
+#section-map {
+    background-color: #1e322d;
+    color: #fafafa;
+}
+
+#map {
+    min-height: 380px;
+    height: 380px;
+}
+
+#map .map-text {
+    color: black;
+}
+
+#installfest {
+    background: none repeat scroll 0% 0% #686868;
+    color: #fafafa;
+    
+}
+
+
+#rodape {
+    background: none repeat scroll 0% 0% #686868;
+    color: #fafafa;
+    
+}
+
+ul.social-network {
+	list-style: none;
+	display: inline;
+	margin-left:0 !important;
+	padding: 0;
+}
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
+
+.social-network a.icoRss:hover {
+	background-color: #F56505;
+}
+.social-network a.icoFacebook:hover {
+	background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+	background-color:#33ccff;
+}
+.social-network a.icoGoogle:hover {
+	background-color:#BD3518;
+}
+.social-network a.icoVimeo:hover {
+	background-color:#0590B8;
+}
+.social-network a.icoLinkedin:hover {
+	background-color:#007bb7;
+}
+.social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i, 
+.social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+	color:#fff;
+}
+a.socialIcon:hover, .socialHoverClass {
+	color:#44BCDD;
+}
+
+.social-circle li a {
+	display:inline-block;
+	position:relative;
+	margin:0 auto 0 auto;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	text-align:center;
+	width: 50px;
+	height: 50px;
+	font-size:20px;
+}
+.social-circle li i {
+	margin:0;
+	line-height:50px;
+	text-align: center;
+}
+
+
+.social-circle i {
+	color: #fff;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+/* ==========================
+ --- Parallax ---
+============================= */
+
+
+
+section.section {
+    padding: 40px 0px;
+}
+
+#programacao {
+    background-image: url("../../img/site/background-palestrantes.jpg");
+}
+

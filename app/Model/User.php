@@ -22,14 +22,26 @@ class User extends AppModel {
                 'rule' => 'notEmpty'
             ),
             'email' => array('rule' => 'email'),
-            'unique' => array(
-                'rule' => 'isUnique',
-                'required' => 'create'
+            'uniqueLogin' => array(
+                'rule' => array('verifyUniqueLogin'),
+                'required' => 'create',
+                'message' => 'Este e-mail já está registrado . Por favor, redefina sua senha.'
             )
         ),
         'password' => array('rule' => 'notEmpty'),
         'document' => array('rule' => 'notEmpty')
     );
+
+    public function verifyUniqueLogin($check) {
+        $record = $this->find('count', array(
+            'conditions' => array(
+                'User.email' => $check['email'],
+                'User.deleted' => 0
+            ),
+            'recursive' => -1
+        ));
+        return $record == 0;
+    }
 
     public function getUserById($id) {
         $options = array(
@@ -45,7 +57,7 @@ class User extends AppModel {
 
     public function getUserByEmailAndPassword($email, $password) {
         $hasher = new HmacPasswordHasher();
-        
+
         $options = array(
             'fields' => array('User.id', 'User.fullname', 'User.email'),
             'conditions' => array(

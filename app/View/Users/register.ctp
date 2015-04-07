@@ -17,6 +17,9 @@
 
 <?php echo $this->Form->input('User.fullname', array('label' => __('Full name'), 'class' => 'form-control', 'div' => 'form-group')); ?>
 <?php echo $this->Form->input('User.email', array('label' => __('Email'), 'type' => 'email', 'class' => 'form-control', 'div' => 'form-group')); ?>
+<?php if ($activeRecoverPassword): ?>
+    <?php echo $this->Html->link(__('Recovery password'), array('controller' => 'Users', 'action' => 'recoveryPassword'), array('class' => 'btn btn-sm btn-warning')) ?>
+<?php endif; ?>
 <?php echo $this->Form->input('User.password', array('label' => __('Password'), 'class' => 'form-control', 'div' => 'form-group')); ?>
 <?php echo $this->Form->input('User.document', array('label' => __('Document'), 'class' => 'form-control', 'div' => 'form-group')); ?>
 <?php echo $this->Form->input('User.phone', array('label' => __('Phone'), 'type' => 'phone', 'class' => 'form-control', 'div' => 'form-group')); ?>

@@ -15,12 +15,12 @@
         <link rel="canonical" href="<?php echo Router::url(null, true); ?>">
         <meta property="og:url" content="<?php echo Router::url(null, true); ?>">
 
-        <meta property="og:site_name" content="<?php echo __('Sistema de eventos - UFPR - Jandaia do Sul'); ?>">
+        <meta property="og:site_name" content="<?php echo __('FLISoL - Jandaia do Sul'); ?>">
 
-        <meta name="description" content="<?php echo (isset($description_for_layout) ? $description_for_layout : __('Sistema de eventos - UFPR - Jandaia do Sul')); ?>">
-        <meta property="og:description" content="<?php echo (isset($description_for_layout) ? $description_for_layout : __('Sistema de eventos - UFPR - Jandaia do Sul')); ?>">
+        <meta name="description" content="<?php echo (isset($description_for_layout) ? $description_for_layout : __('FLISoL - Jandaia do Sul')); ?>">
+        <meta property="og:description" content="<?php echo (isset($description_for_layout) ? $description_for_layout : __('FLISoL - Jandaia do Sul')); ?>">
 
-        <meta property="og:image" content="<?php echo $this->Html->url('/img/logo-ufpr-200x200.png', true); ?>">
+        <meta property="og:image" content="<?php echo $this->Html->url('/img/site/flisol-200x200.png', true); ?>">
         <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="200">
         <meta property="og:image:height" content="200">
@@ -30,7 +30,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta name="robots" content="index, follow">
-        <meta name="keywords" content="jandaia do sul, universidade federal do paraná, universidade, eventos, jornada, semana acadêmica, cursos, ufpr">
+        <meta name="keywords" content="flisol, 2015, software livre, open source, jandaia do sul, jandaia, festival, latino-americano, instalação, linux, software, livre, evento">
 
         <title><?php echo $title_for_layout; ?></title>
 
@@ -68,19 +68,19 @@
                         <ul class="nav navbar-nav">
                             <li><?php echo $this->Html->link(__('My participation'), array('controller' => 'Users', 'action' => 'myEditions')); ?></li>
                         </ul>
-                    
+
                         <?php if (isset($authUser) && $authUser['role'] === 'admin'): ?>
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Record'); ?> <span class="caret"></span></a>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li><?php echo $this->Html->link(__('Editions'), array('controller' => 'Editions', 'action' => 'index')); ?></li>
-                                    <li><?php echo $this->Html->link(__('Users'), array('controller' => 'Users', 'action' => 'index')); ?></li>
-                                </ul>
-                            </li>
-                        </ul>
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo __('Record'); ?> <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><?php echo $this->Html->link(__('Editions'), array('controller' => 'Editions', 'action' => 'index')); ?></li>
+                                        <li><?php echo $this->Html->link(__('Users'), array('controller' => 'Users', 'action' => 'index')); ?></li>
+                                    </ul>
+                                </li>
+                            </ul>
                         <?php endif; ?>
-                    
+
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> <?php echo __('Options'); ?> <span class="caret"></span></a>
@@ -130,19 +130,36 @@
         <![endif]-->
 
         <script type="text/javascript">
-            jQuery(document).ready(function() {
-                window.setTimeout(function() {
-                    $(".alert-removable").fadeTo(500, 0).slideUp(500, function() {
+            jQuery(document).ready(function () {
+                window.setTimeout(function () {
+                    $(".alert-removable").fadeTo(500, 0).slideUp(500, function () {
                         $(this).remove();
                     });
                 }, 5000);
             });
         </script>
+        <script>
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                        m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        <?php echo $this->fetch('script'); ?>
+            ga('create', 'UA-49816123-1', 'auto');
+            ga('send', 'pageview');
 
-        <?php if ($this->fetch('scripts')): ?>
-            <?php echo $this->fetch('scripts'); ?>
-        <?php endif; ?>
+        </script>
+
+<?php echo $this->fetch('script'); ?>
+
+<?php if ($this->fetch('scripts')): ?>
+    <?php echo $this->fetch('scripts'); ?>
+<?php endif; ?>
     </body>
 </html>

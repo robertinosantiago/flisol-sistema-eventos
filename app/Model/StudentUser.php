@@ -29,4 +29,37 @@ class StudentUser extends AppModel {
         return $this->find('first', $options);
     }
     
+    /**
+     * Check if a user is registered in a course as a student
+     * @param int $course_id
+     * @param int $user_id
+     * @return boolean
+     */
+    public function isRegistered($course_id, $user_id) {
+        $options = array(
+            'fields' => array('StudentUser.id'),
+            'joins' => array(
+                array(
+                    'table' => $this->tablePrefix . 'students',
+                    'alias' => 'Student',
+                    'type' => 'inner',
+                    'conditions' => 'Student.id = StudentUser.student_id'
+                )
+            ),
+            'conditions' => array(
+                'Student.course_id' => $course_id,
+                'StudentUser.user_id' => $user_id
+            ),
+            'recursive' => -1
+        );
+        
+        $record = $this->find('first', $options);
+        
+        if (!empty($record)) {
+            return true;
+        }
+        
+        return false;
+    }
+    
 }
